@@ -19,3 +19,11 @@ export function increase(){
 export function decrease(){
   return {type: DECREMENT}
 }
+
+export function asyncIncrease(){
+  return dispatch => {
+    setTimeout(() =>{
+      dispatch(increase())
+    }, 2000)
+  }
+}

@@ -1,40 +1,20 @@
-// import { createStore } from "redux";
-//
-// function counter(state = 0, action) {
-//   switch (action.type) {
-//   case 'INCREMENT':
-//     return state + 1
-//   case 'DECREMENT':
-//     return state - 1
-//   default:
-//     return 10
-//   }
-// }
-//
-// let store = createStore(counter);
-//
-// store.subscribe(() =>
-//   console.log(store.getState())
-// )
-//
-// store.dispatch({ type: 'INCREMENT' })
-// // 11
-// store.dispatch({ type: 'INCREMENT' })
-// // 12
-// store.dispatch({ type: 'DECREMENT' })
-// // 11
-
 import React from "react"
 import ReactDOM from "react-dom"
-import { createStore } from "redux"
+import { createStore, applyMiddleware, compose } from "redux"
+import thunk from "redux-thunk"
+import { Provider } from "react-redux"
 import App from "./App"
 import { counter } from "./index.redux"
 
-const store = createStore(counter)
+const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : null
 
-function render(){
-  ReactDOM.render(<App store={store}/>, document.getElementById("root"))
-}
+const store = createStore(counter, compose(
+  applyMiddleware(thunk),
+  reduxDevtools
+))
 
-render()
-store.subscribe(render)
+  ReactDOM.render(
+    <Provider store={store}>
+      <App/>
+    </Provider>,
+     document.getElementById("root"))
