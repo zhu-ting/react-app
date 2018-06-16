@@ -1,28 +1,18 @@
-import React from "react"
-import { connect } from "react-redux"
-import { increase, decrease, asyncIncrease } from "./index.redux.js"
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-const mapStateToProps = (state) => {
-  return { num: state}
-}
-
-const actionCreators = { increase, decrease, asyncIncrease }
-
-@connect(mapStateToProps, actionCreators)
-class App extends React.Component{
-
-  render(){
-    const {num,increase,decrease,asyncIncrease} = this.props
-    return(
-      <div>
-        <h1>Current{num}</h1>
-        <button onClick={increase}>addOne</button>
-        <button onClick={decrease}>minusOne</button>
-        <button onClick={asyncIncrease}>asyncIncrease</button>
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to React</h1>
+        </header>
       </div>
-    )
+    );
   }
 }
 
-// App = connect(mapStateToProps, actionCreator)(App)
-export default App
+export default App;

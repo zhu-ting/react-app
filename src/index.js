@@ -1,34 +1,35 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import { createStore, applyMiddleware, compose } from "redux"
-import thunk from "redux-thunk"
-import { Provider } from "react-redux"
-import { BrowserRouter, Route, Link, Redirect, Switch } from 'react-router-dom'
-import Auth from "./Auth"
-import Dashboard from "./Dashboard"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
-import { counter } from "./index.redux"
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import reducers from './reducer'
+import './config'
+import Login from './container/login/Login'
+import Register from './container/register/Register'
 
-const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : null
-
-const store = createStore(counter, compose(
+const store = createStore(reducers, compose(
   applyMiddleware(thunk),
-  reduxDevtools
+  window.devToolsExtension?window.devToolsExtension():f=>f
 ))
-// Login
-//   without login info
-// Page  nav+view+logout
-//   01
-//   02
-//   03
-  ReactDOM.render(
-    <Provider store={store}>
+ReactDOM.render(
+  <Provider store={store}>
+    <div>
+      <App />
       <BrowserRouter>
-        <Switch>
-          <Route path="/login" exact component={Auth}></Route>
-          <Route path="/dashboard" component={Dashboard}></Route>
-          <Redirect to="./dashboard"></Redirect>
-        </Switch>
+        <div>
+          <Route path="/login" component={Login}></Route>
+          <Route path="/register" component={Register}></Route>
+
+        </div>
       </BrowserRouter>
-    </Provider>,
-     document.getElementById("root"))
+    </div>
+  </Provider>,
+  document.getElementById('root')
+);
+registerServiceWorker();
