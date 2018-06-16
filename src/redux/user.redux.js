@@ -3,7 +3,7 @@ import { getRedirectPath } from '../util'
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
-
+const LOAD_DATA = 'LOAD_DATA'
 const initialState = {
   redirectTo:'',
   msg: '',
@@ -19,6 +19,8 @@ export function user(state=initialState, action){
       return {...state, msg:'', isAuth: true, redirectTo:getRedirectPath(action.payload), ...action.payload}
     case LOGIN_SUCCESS:
       return {...state, msg:'', isAuth: true, redirectTo:getRedirectPath(action.payload), ...action.payload}
+    case LOAD_DATA:
+      return {...state, ...action.payload}
     case ERROR_MSG:
       return {...state, msg:action.msg, isAuth: false}
     default:
@@ -35,6 +37,10 @@ function loginSuccess(data){
 }
 function errorMsg(msg){
   return {msg, type: ERROR_MSG}
+}
+
+export function loadData(userInfo){
+  return { type: LOAD_DATA, payload: userInfo}
 }
 
 export function login({user, password}){
