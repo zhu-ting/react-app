@@ -26,9 +26,7 @@ class AuthRoute extends React.Component{
     // is login ?  current url?  finish userInfo?
   }
   render(){
-    return(
-      <div> AuthRoute judge </div>
-    )
+    return null
   }
 }
 
