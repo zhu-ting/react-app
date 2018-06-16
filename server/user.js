@@ -1,6 +1,7 @@
 const express = require('express')
-const Router = express.Router()
+const utils = require('utility')
 const model = require('./model')
+const Router = express.Router()
 const User = model.getModel('user')
 
 Router.get('/list', function(req,res){
@@ -16,7 +17,7 @@ Router.post('/list', function(req,res){
     if(doc){
       return res.json({code:1, msg:"repeated username"})
     }
-    User.create({user,password,type}, function(e,d){
+    User.create({user,password: md5Pwd(password),type}, function(e,d){
       if(e){
         return res.json({code:1, msg:'error'})
       }
@@ -28,5 +29,10 @@ Router.post('/list', function(req,res){
 Router.get('/info', function(req,res){
   return res.json({code:1})
 })
+
+function md5Pwd(pwd){
+  const salt = 'judy@yqazsy~'
+  return utils.md5(utils.md5(pwd+salt))
+}
 
 module.exports = Router
