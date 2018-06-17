@@ -7,3 +7,9 @@ body {
 .err{
   color: #f50;
 }
+
+.fixed-header {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

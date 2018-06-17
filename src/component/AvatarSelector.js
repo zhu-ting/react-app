@@ -22,7 +22,7 @@ class AvatarSelector extends React.component{
             columnNum={5}
             onClick={elm=>{
               this.setState(elm)
-              this.props.selectAvatar(el,.text)
+              this.props.selectAvatar(elm.text)
             }}
          />
         </List>

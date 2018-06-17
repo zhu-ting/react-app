@@ -14,17 +14,15 @@ import Login from './container/login/Login'
 import Register from './container/register/Register'
 import AuthRoute from './component/authrouter/AuthRoute'
 import BossInfo from './container/bossinfo/BossInfo'
+import GeniusInfo from './container/bossinfo/GeniusInfo'
+import Dashboard from './component/Dashboard'
 
 const store = createStore(reducers, compose(
   applyMiddleware(thunk),
   window.devToolsExtension?window.devToolsExtension():f=>f
 ))
 
-function Boss(){
-  return(
-    <div>Boss Page</div>
-  )
-}
+// boss genius me msg
 ReactDOM.render(
   <Provider store={store}>
     <div>
@@ -32,10 +30,14 @@ ReactDOM.render(
       <BrowserRouter>
         <div>
           <AuthRoute></AuthRoute>
-          <Route path="/bossinfo" component={BossInfo}></Route>
-          <Route path="/boss" component={Boss}></Route>
-          <Route path="/login" component={Login}></Route>
-          <Route path="/register" component={Register}></Route>
+          <Switch>
+            <Route path="/bossinfo" component={BossInfo}></Route>
+            <Route path="/geniusinfo" component={GeniusInfo}></Route>
+            {/* <Route path="/boss" component={Boss}></Route> */}
+            <Route path="/login" component={Login}></Route>
+            <Route path="/register" component={Register}></Route>
+            <Route component={Dashboard}></Route>
+          </Switch>
         </div>
       </BrowserRouter>
     </div>
