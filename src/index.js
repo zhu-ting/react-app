@@ -13,6 +13,7 @@ import reducers from './reducer'
 import Login from './container/login/Login'
 import Register from './container/register/Register'
 import AuthRoute from './component/authrouter/AuthRoute'
+import BossInfo from './container/bossinfo/BossInfo'
 
 const store = createStore(reducers, compose(
   applyMiddleware(thunk),
@@ -31,6 +32,7 @@ ReactDOM.render(
       <BrowserRouter>
         <div>
           <AuthRoute></AuthRoute>
+          <Route path="/bossinfo" component={BossInfo}></Route>
           <Route path="/boss" component={Boss}></Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/register" component={Register}></Route>
