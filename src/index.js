@@ -3,20 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from './container/Login'
 import Register from './container/Register'
 import BossInfo from './container/BossInfo'
 import GeniusInfo from './container/GeniusInfo'
 import reducers from './reducer'
 
-const store = createStore(reducers, compose(
-    applyMiddleware(thunk),
-    window.devToolsExtension ? window.devToolsExtension : f=>f
-))
+const store = createStore(reducers, applyMiddleware(thunk))
 ReactDOM.render(
   <Provider store={store}>
       <BrowserRouter>
