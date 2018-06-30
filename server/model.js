@@ -1,32 +1,21 @@
-const mongoose = require("mongoose")
-const DB_URL = "mongodb://127.0.0.1:27017"
-
+const mongoose = require('mongoose')
+const DB_URL = 'mongodb:loaclhost:27017/chat'
+// https://github.com/Automattic/mongoose/issues/5399
 mongoose.connect(DB_URL)
-mongoose.connection.on("connected", function(){
-  console.log("mongo connect success");
-})
 
 const models = {
-  user: {
-    'user': {type:String, require:true},
-    'password': {type:String, require:true},
-    'type': {type: String, require:true},
-    'avatar': {type: String},
-    'desc': {type: String},
-    'title': {type: String},
-    // boss other 2 params
-    'company': {type: String},
-    'money': {type: String}
-  },
-  chat: {}
+    user: {
+        'username': {type:String, require:true},
+        'password': {type:String, require:true},
+    }
 }
 
 for(let m in models){
-  mongoose.model(m, new mongoose.Schema(models[m]))
+    mongoose.model(m, new mongoose.Schema(models[m]))
 }
 
 module.exports = {
-  getModel: function(name){
-    return mongoose.model(name)
-  }
+    getModel: function(name){
+        return mongoose.model(name)
+    }
 }
