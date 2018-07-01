@@ -1,6 +1,6 @@
 
 ### react/redux/express/mongoDB
-As I dove into learning React, I struggled to put all the moving pieces together, trace the flow of data through my application, and understand the larger architecture.  
+As I dived in to learning React, I struggled to put all the moving pieces together, trace the flow of data through my application, and understand the larger architecture.  
 And this is one of the reason I make this repo.  
 
 00 create a new project
