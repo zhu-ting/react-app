@@ -12,6 +12,7 @@ import Register from './container/Register'
 import BossInfo from './container/BossInfo'
 import GeniusInfo from './container/GeniusInfo'
 import reducers from './reducer'
+import './config'
 
 const store = createStore(reducers, applyMiddleware(thunk))
 ReactDOM.render(

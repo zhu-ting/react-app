@@ -29,7 +29,6 @@
     }
   
     handleRegister() {
-      
       this.props.register(this.state)
     }
   
