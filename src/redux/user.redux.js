@@ -16,7 +16,7 @@ const initialState = {
 export function user(state=initialState, action){
     switch(action.type){
         case REGISTER_SUCCESS:
-          return {...state, msg:'', redirectTo: getRedirectPath(), isAuth: true, ...action.payload}
+          return {...state, msg:'', redirectTo: getRedirectPath(action.payload), isAuth: true, ...action.payload}
         case ERROR_MSG:
           return {...state, isAuth: false, msg: action.msg}
         default:
