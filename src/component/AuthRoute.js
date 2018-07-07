@@ -1,7 +1,14 @@
 import React from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
+import { loadData } from '../redux/user.redux'
+import { connect } from 'react-redux'
 
+@withRouter
+@connect(
+	null,
+	{loadData}
+)
 // to check if the route works, get userinfo and go to the right page
 @withRouter
 class AuthRoute extends React.Component{
