@@ -2,13 +2,14 @@ import React from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 
+// to check if the route works, get userinfo and go to the right page
 @withRouter
 class AuthRoute extends React.Component{
 
   componentDidMount(){
     const publicList = ['/login', '/register']
     const pathname = this.props.location.pathname
-    if(publicList.indexOf(pathname)>-1){
+    if(publicList.includes(pathname)){
       return null
     }
     // user === boss or genius
@@ -26,7 +27,7 @@ class AuthRoute extends React.Component{
     // is login ?  current url?  finish userInfo?
   }
   render(){
-    return null
+    return <p>where judge route</p>
   }
 }
 
