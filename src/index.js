@@ -6,14 +6,15 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from './container/Login'
 import Register from './container/Register'
 import BossInfo from './container/BossInfo'
 import GeniusInfo from './container/GeniusInfo'
 import reducers from './reducer'
 import './config'
-import AuthRoute from './component/AuthRoute';
+import AuthRoute from './component/AuthRoute'
+import './index.css'
 
 const store = createStore(reducers, applyMiddleware(thunk))
 
@@ -23,14 +24,11 @@ ReactDOM.render(
   <Provider store={store}>
       <BrowserRouter>
         <div>
-            {/* <Switch> */}
-                <AuthRoute></AuthRoute>
-                <Route path="/login" exact component={Login}></Route>
-                <Route path="/register" component={Register}></Route>
-                <Route path="/bossinfo" component={BossInfo}></Route>
-                <Route path="/geniusinfo" component={GeniusInfo}></Route>
-                <Redirect to="/login"></Redirect>
-            {/* </Switch> */}
+            <AuthRoute></AuthRoute>
+            <Route path="/login" exact component={Login}></Route>
+            <Route path="/register" component={Register}></Route>
+            <Route path="/bossinfo" component={BossInfo}></Route>
+            <Route path="/geniusinfo" component={GeniusInfo}></Route>
         </div>
       </BrowserRouter>
   </Provider>

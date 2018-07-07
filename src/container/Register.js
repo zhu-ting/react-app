@@ -17,12 +17,12 @@
       this.state = {
         user: '',
         pwd: '',
+        repeatedpwd: '',
         type: 'genius'
       }
     }
   
-    handleChange(key, value) {
-      console.log(this.state)
+    handleChange(key, value) {    
       this.setState({
         [key]: value
       })
@@ -38,13 +38,18 @@
         <div className="App">
         {this.props.redirectTo? <Redirect to={this.props.redirectTo}></Redirect>:null}
           <App />
+          <List>
+            {this.props.msg ? <p className='error-msg'>{this.props.msg}</p> : null}
           <InputItem onChange={v => this.handleChange('user', v)}>
             Username
          </InputItem>
           <InputItem onChange={v => this.handleChange('pwd', v)} type='password'>
             Password
          </InputItem>
-         <List>
+         <InputItem onChange={v => this.handleChange('repeatedpwd', v)} type='password'>
+            Confirm
+         </InputItem>
+
          <RadioItem checked={this.state.type === 'boss'} onChange={() => this.handleChange('type', 'boss')}>
             boss
           </RadioItem>

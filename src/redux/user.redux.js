@@ -8,8 +8,9 @@ const initialState = {
     redirectTo: '',
     msg: '',
     isAuth: '',
-    username: '',
-    password: ''
+    user: '',
+    pwd: '',
+    type: ''
 }
 // reducer
 export function user(state=initialState, action){
@@ -28,18 +29,18 @@ function showError(msg){
 }
 
 function registerSuccess(data){
-    return { type: ERROR_MSG, payload: data}
+    return { type: REGISTER_SUCCESS, payload: data}
 }
 
-export function register({username, password}){
-    if(!username || !password){
-        return showError('username and password required')
+export function register({user, pwd, type}){
+    if(!user || !pwd){
+        return showError('user and pwd required')
     }
     return dispatch => {
-        axios.post('/user/register', {username, password})
+        axios.post('/user/register', {user, pwd, type})
         .then(res => {
             if(res.status===200 && res.data.code===0){
-                dispatch(registerSuccess({username, password}))
+                dispatch(registerSuccess({user, pwd, type}))
             } else {
                 dispatch(showError(res.data.msg))
             }
