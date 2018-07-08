@@ -26,14 +26,14 @@ ReactDOM.render(
   <Provider store={store}>
       <BrowserRouter>
         <div>
-          <Switch>
+          {/* <Switch> */}
             <AuthRoute></AuthRoute>
             <Route path="/login" exact component={Login}></Route>
             <Route path="/register" component={Register}></Route>
             <Route path="/bossinfo" component={BossInfo}></Route>
             <Route path="/geniusinfo" component={GeniusInfo}></Route>
             <Route component={Dashboard}></Route>
-          </Switch>
+          {/* </Switch> */}
         </div>
       </BrowserRouter>
   </Provider>

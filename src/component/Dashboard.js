@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import { NavBar } from 'antd-mobile'
 import NavLinkBar from './NavLink'
 import { Route, Switch } from "react-router-dom"
-import Boss from '../../component/Boss'
-import Genius from '../../component/Genius'
-import User from '../../component/User'
-import Msg from '../../component/Msg'
+import Boss from './Boss'
+import Genius from './Genius'
+import User from './User'
+import Msg from './Msg'
 
 @connect(
   state => state
@@ -29,7 +29,7 @@ class Dashboard extends React.Component{
       {
         path: '/genius',
         text: 'boss',
-        icon: 'genius',
+        icon: 'job',
         title: 'boss list',
         component: Genius,
         hide: user.type == 'boss'
@@ -44,7 +44,7 @@ class Dashboard extends React.Component{
       {
         path: '/me',
         text: 'me',
-        icon: 'me',
+        icon: 'user',
         title: 'profile',
         component: User,
       },
@@ -52,7 +52,7 @@ class Dashboard extends React.Component{
     return(
       <div>
         <NavBar mode="dark" className="fixed-header">
-          {navList.find(v=>v.path==pathname).title}
+          {/* {navList.find(v=>v.path==pathname).title} */}title
         </NavBar>
         <div style={{marginTop: 45}}>
           <Switch>

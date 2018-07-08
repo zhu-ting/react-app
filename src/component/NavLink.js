@@ -20,8 +20,8 @@ class NavLinkBar extends React.Component {
                       badge={v.path==='/msg'?this.props.unread:0}
                       key={v.path}
                       title={v.text}
-                      icon={{uri: require('./img/${v.icon}.png')}}
-                      selectedIcon={{uri: require('../img/${v.icon}-active.png')}}
+                      icon={{uri: require(`../img/${v.icon}.png`)}}
+                      selectedIcon={{uri: require(`../img/${v.icon}-active.png`)}}
                       selected={pathname===v.path}
                       onPress={()=>{
                           this.props.history.push(v.path)

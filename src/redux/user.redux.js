@@ -5,6 +5,7 @@ const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
 const LOAD_DATA = 'LOAD_DATA'
+const LOGOUT = 'LOGOUT'
 
 const initialState = {
     redirectTo: '',
@@ -25,6 +26,8 @@ export function user(state = initialState, action) {
             return { ...state, ...action.payload }
         case ERROR_MSG:
             return { ...state, isAuth: false, msg: action.msg }
+        case LOGOUT:
+            return { ...initialState, redirectTo: '/login' }
         default:
             return state
     }
@@ -44,6 +47,10 @@ export function loadData(userinfo) {
 
 function loginSuccess(data) {
     return { type: LOGIN_SUCCESS, payload: data }
+}
+
+export function logoutSubmit() {
+    return { type: LOGOUT }
 }
 
 export function login({ user, pwd }) {
