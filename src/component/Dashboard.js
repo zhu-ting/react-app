@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavBar } from 'antd-mobile'
-import NavLinkBar from '../component/NavLink'
-import { Switch } from 'react-redux'
+import NavLinkBar from './NavLink'
+import { Route, Switch } from "react-router-dom"
 import Boss from '../../component/Boss'
 import Genius from '../../component/Genius'
+import User from '../../component/User'
+import Msg from '../../component/Msg'
 
 @connect(
   state => state
@@ -14,6 +16,7 @@ class Dashboard extends React.Component{
 
   render(){
     const { pathname } = this.props.location
+    const user = this.props.user
     const navList = [
       {
         path: '/boss',
@@ -58,7 +61,7 @@ class Dashboard extends React.Component{
             ))}
           </Switch>
         </div>
-        <NavLinkBar />
+        <NavLinkBar data={navList}></NavLinkBar>
       </div>
     )
   }
