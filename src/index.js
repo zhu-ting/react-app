@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -18,7 +18,11 @@ import './config'
 import AuthRoute from './component/AuthRoute'
 import './index.css'
 
-const store = createStore(reducers, applyMiddleware(thunk))
+// Not store found  https://github.com/zalmoxisus/redux-devtools-extension/issues/126#issuecomment-222605604
+const store = createStore(reducers, compose(
+	applyMiddleware(thunk),
+	window.devToolsExtension ? window.devToolsExtension() : f => f
+))
 
 // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Switch.md
 
