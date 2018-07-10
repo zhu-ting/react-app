@@ -2,6 +2,7 @@ import React from 'react';
 import { TabBar } from 'antd-mobile';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 @withRouter
 @connect(
@@ -9,10 +10,12 @@ import { connect } from 'react-redux';
 )
 
 class NavLinkBar extends React.Component {
+    static propTypes = {
+        data: PropTypes.array.required
+    }
     render() {
         const navList = this.props.data.filter(v => !v.hide)
         const { pathname } = this.props.location
-
         return (
             <TabBar>
                 {navList.map(v=>(

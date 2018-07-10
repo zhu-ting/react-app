@@ -49,10 +49,11 @@ class Dashboard extends React.Component{
         component: User,
       },
     ]
+
     return(
       <div>
-        <NavBar mode="dark" className="fixed-header">
-          {/* {navList.find(v=>v.path==pathname).title} */}title
+        <NavBar mode="light" className="fixed-header">
+          {navList.find(v=>v.path===pathname).title}
         </NavBar>
         <div style={{marginTop: 45}}>
           <Switch>
