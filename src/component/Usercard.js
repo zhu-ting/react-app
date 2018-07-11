@@ -11,7 +11,7 @@ class UserCard extends React.Component {
         return (
             <WingBlank>
                 <WhiteSpace></WhiteSpace>
-                {this.props.userlist.map(v => {
+                {this.props.userlist.map(v => (
                     v.avatar ? (
                         <Card
                             key={v._id}
@@ -32,7 +32,7 @@ class UserCard extends React.Component {
                             </Body>
                         </Card>
                     ) : null
-                })}
+                ))}
             </WingBlank>
         )
     }
