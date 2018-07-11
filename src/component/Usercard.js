@@ -25,9 +25,7 @@ class UserCard extends React.Component {
                             </Header>
                             <Body>
                                 {v.title === 'boss' ? <div>Company:{v.company}</div> : null}
-                                {v.desc.split('\n').map(d => (
-                                    <div key={d}>{d}</div>
-                                ))}
+                                {v.desc}
                                 {v.title === 'boss' ? <div>Money:{v.money}</div> : null}
                             </Body>
                         </Card>
