@@ -52,9 +52,9 @@ class Dashboard extends React.Component{
 
     return(
       <div>
-        <NavBar mode="light" className="fixed-header">
+        {/* <NavBar mode="light" className="fixed-header">
           {navList.find(v=>v.path===pathname).title}
-        </NavBar>
+        </NavBar> */}
         <div style={{marginTop: 45}}>
           <Switch>
             {navList.map(v=>(

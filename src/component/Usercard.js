@@ -5,6 +5,10 @@ import { withRouter } from 'react-router-dom';
 @withRouter
 class UserCard extends React.Component {
 
+    handleClick(v){
+        this.props.history.push(`/chat/${v.user}`)
+    }
+
     render() {
         const Header = Card.Header
         const Body = Card.Body
