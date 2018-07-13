@@ -10,7 +10,7 @@ import { getUserList } from '../redux/chatuser.redux';
 
 class Boss extends React.Component{
     componentDidMount(){
-        this.props.getUserList('boss')
+        this.props.getUserList('genius')
     }
 
     render(){
