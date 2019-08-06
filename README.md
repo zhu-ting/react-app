@@ -1,6 +1,6 @@
 Redux 101
 
-通过https://github.com/facebook/create-react-app新建项目，安装redux后修改index.js
+通过https://github.com/facebook/create-react-app  新建项目，安装redux后修改index.js
 
 1 首先通过createStore新建store，随时通过store.getState获取状态
 
